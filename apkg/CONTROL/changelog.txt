@@ -1,0 +1,6 @@
+Version 3.6a-1 (2026-01-11)
+- Initial release of tmux for ASUSTOR NAS
+- tmux version 3.6a
+- Built from source with libevent 2.1.12 and ncurses 6.5
+- All dependencies bundled for zero runtime dependencies
+- Optimized for ASUSTOR NAS environment

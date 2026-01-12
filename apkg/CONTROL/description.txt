@@ -1,0 +1,13 @@
+tmux is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen.
+
+tmux may be detached from a screen and continue running in the background, then later reattached. This is especially useful for maintaining persistent SSH sessions on remote servers.
+
+Key Features:
+- Session management: Create, detach, and reattach terminal sessions
+- Window management: Multiple windows within a single session
+- Pane splitting: Split windows horizontally or vertically
+- Session sharing: Multiple users can attach to the same session
+- Scriptable: Automate complex terminal layouts
+- Persistent sessions: Sessions survive network disconnections
+
+This package provides tmux binaries compiled from source for ASUSTOR NAS devices, enabling powerful terminal multiplexing directly on your NAS.

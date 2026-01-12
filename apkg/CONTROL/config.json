@@ -1,0 +1,42 @@
+{
+  "general": {
+    "package": "tmux",
+    "name": "tmux",
+    "version": "3.6a-1",
+    "depends": [],
+    "conflicts": [],
+    "developer": "tmux contributors",
+    "maintainer": "krzysbaranski",
+    "email": "",
+    "website": "https://github.com/tmux/tmux",
+    "architecture": "x86-64",
+    "firmware": "5.1",
+    "description": "tmux is a terminal multiplexer for Unix-like systems",
+    "license": "ISC"
+  },
+  "register": {
+    "symbolic-link": {
+      "/bin": [
+        "tmux"
+      ],
+      "/lib": [
+        "libevent-2.1.so.7",
+        "libevent-2.1.so.7.0.1",
+        "libevent_core-2.1.so.7",
+        "libevent_core-2.1.so.7.0.1",
+        "libevent_extra-2.1.so.7",
+        "libevent_extra-2.1.so.7.0.1",
+        "libevent_pthreads-2.1.so.7",
+        "libevent_pthreads-2.1.so.7.0.1",
+        "libncursesw.so.6",
+        "libncursesw.so.6.5",
+        "libformw.so.6",
+        "libformw.so.6.5",
+        "libmenuw.so.6",
+        "libmenuw.so.6.5",
+        "libpanelw.so.6",
+        "libpanelw.so.6.5"
+      ]
+    }
+  }
+}
