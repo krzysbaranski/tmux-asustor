@@ -7,6 +7,7 @@ set -e
 STAGING_DIR="$(pwd)/staging"
 PACKAGE_DIR="$(pwd)/apkg"
 PREFIX="/usr/local/tmux"
+INSTALL_PREFIX="/usr/local/AppCentral/tmux"
 
 echo "================================================"
 echo "Packaging tmux for ASUSTOR"
@@ -26,6 +27,28 @@ find "${PACKAGE_DIR}" -mindepth 1 -maxdepth 1 -type d ! -name "CONTROL" -exec rm
 # Copy everything from staging to package at root level
 echo "Step 2: Copying files from staging to package..."
 cp -a "${STAGING_DIR}${PREFIX}/"* "${PACKAGE_DIR}/" 2>/dev/null || true
+
+# Create wrapper script for tmux to set up environment
+echo "Step 3: Creating tmux wrapper script..."
+mv "${PACKAGE_DIR}/bin/tmux" "${PACKAGE_DIR}/bin/tmux.bin"
+cat > "${PACKAGE_DIR}/bin/tmux" << 'WRAPPER'
+#!/bin/sh
+# Wrapper script for tmux to set up environment variables
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PKG_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Set TERMINFO to use the bundled terminal database
+export TERMINFO="${PKG_DIR}/share/terminfo"
+
+# Ensure our libraries are found
+export LD_LIBRARY_PATH="${PKG_DIR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+# Execute the real tmux binary
+exec "${SCRIPT_DIR}/tmux.bin" "$@"
+WRAPPER
+chmod +x "${PACKAGE_DIR}/bin/tmux"
 
 echo ""
 echo "================================================"
