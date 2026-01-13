@@ -72,6 +72,7 @@ CFLAGS="-fPIC" LDFLAGS="-L${STAGING_DIR}${PREFIX}/lib -Wl,-rpath,${INSTALL_PREFI
     --with-shared \
     --without-debug \
     --without-ada \
+    --without-cxx-binding \
     --enable-widec \
     --enable-pc-files \
     --with-pkg-config-libdir="${PREFIX}/lib/pkgconfig"
